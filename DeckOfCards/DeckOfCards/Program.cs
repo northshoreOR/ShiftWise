@@ -32,17 +32,9 @@ namespace DeckOfCards
 
 			Console.ReadLine();
 		}
-
 	}
 
-	public interface ICardDeck
-	{
-		void SortCards(List<Card> cards);
-
-		void ShuffleCards(List<Card> cards);
-	}
-
-	public class CardDeck : ICardDeck
+	public class CardDeck
 	{
 		public List<Card> PlayingCards { get; set; }
 
@@ -57,7 +49,6 @@ namespace DeckOfCards
 			{
 				cards[i].SortValue = i;
 			}
-
 		}
 
 		public void ShuffleCards(List<Card> cards)
@@ -67,16 +58,13 @@ namespace DeckOfCards
 			for (int j = 0; j < cards.Count; j++)
 			{
 				cards[j].SortValue = shuffle.Next();
-			}
-
-			//return cards.OrderBy(x => x.RandomValue).ToList();
+			}			
 		}
 
 		private List<Card> createDeck(List<Card> cardBox)
 		{
 			for (int suit = 1; suit < 5; suit++)
 			{
-
 				for (int i = 1; i < 14; i++)
 				{
 					Card card = new Card();
@@ -143,15 +131,10 @@ namespace DeckOfCards
 					}
 
 					cardBox.Add(card);
-
 				}
-
-
 			}
 			return cardBox;
-		}
-
-		
+		}		
 	}
 
 	public enum Suits
